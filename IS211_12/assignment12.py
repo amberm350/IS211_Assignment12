@@ -10,11 +10,11 @@ app = Flask(__name__)
  
 def init():
     database = None
-    with open('IS211_schema.sql', "r") as schema:
+    with open(".\\IS211_12\IS211_schema.sql", "r") as schema:
         database = schema.read()
     conn = sqlite3.connect('IS211_hw12.db')
     cur = conn.cursor()
-    cur.executescript(schema)
+    cur.executescript(database)
     
 
 def get_db_connection():
@@ -59,3 +59,4 @@ def search_student():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    init()
